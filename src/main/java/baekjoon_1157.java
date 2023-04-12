@@ -3,10 +3,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
-public class baekjoon_1157 { // 다시 풀기
+public class baekjoon_1157 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String str = br.readLine();
+
         char[] arr_char = str.toUpperCase(Locale.ROOT).toCharArray();
 
 
@@ -38,28 +39,27 @@ public class baekjoon_1157 { // 다시 풀기
             idx += 1;
         }
 
+
         char result = char_str[0];
         int max = char_cnt[0];
-
-        // char_str 배열 최대값 찾기
+        boolean isDup = false;
         for (int i = 0; i < char_cnt.length; i++) {
-            for (int j = 0; j < char_cnt.length; j++) {
+            for (int j = i+1; j < char_cnt.length; j++) {
                 if(max < char_cnt[j]){
                     max = char_cnt[j];
                     result = char_str[j];
+                    isDup = false;
+                    break;
+                }
+                else if(max == char_cnt[j]){
+                    result = '?';
+                    isDup = true;
+                    break;
                 }
             }
         }
 
-        // 찾은 최대값이 중복된 값이였는지 확인하기
-        int dup_cnt = 0;
-        for (int i = 0; i < char_cnt.length; i++) {
-            if(char_cnt[i] == max){
-                dup_cnt += 1;
-            }
-        }
-
-        if(dup_cnt > 1){
+        if(isDup){
             result = '?';
         }
 
