@@ -7,6 +7,7 @@ import java.util.Map;
 
 public class baekjoon_25206 {
     public static void main(String[] args) throws IOException {
+        //테스트
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         Map<String, Float> ab_list = new HashMap<>();
